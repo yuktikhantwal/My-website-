@@ -48,6 +48,12 @@ app.get('/',(req,res)=>{
 app.use('/homepage',express.static(path.join(__dirname,'public')))
 app.use('/homepage/api',apiRoute)
 
+app.get('/logout',(req,res)=>{
+    req.session.destroy(()=>{
+        res.clearCookie('connect.sid', { path: '/' }).status(200).send('Logged out');
+    });
+})
+
 app.listen(7777, () => {
     console.log('started on http://localhost:7777')
 })
