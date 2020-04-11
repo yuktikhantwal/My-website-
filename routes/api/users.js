@@ -25,6 +25,8 @@ route.post('/login',(req,res)=>{
         }
     }).then((user)=>{
         if(user.password==req.body.password_){
+            req.session.username = user.username
+            req.session.save()
             res.render('profilepage',{user})
         }
         else 
