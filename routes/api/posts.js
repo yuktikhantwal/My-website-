@@ -32,7 +32,7 @@ route.get('/myposts',(req,res)=>{
 route.get('/allposts',(req,res)=>{
     Post.findAll()
         .then((posts)=>{
-            res.status(201).send(posts)
+            res.render('feed',{ posts })
         })
         .catch((err)=>{
             res.status(501).send({

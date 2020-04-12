@@ -10,9 +10,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
     $(()=>{
-        $('#profilepage').show()
-        $('#message').hide()
-
         let posts = $('#posts')
         let uid = $('#userid').val()
     
@@ -25,8 +22,7 @@
 
         $('#logout_button').click(()=>{
             $.get('http://localhost:7777/logout',(data)=>{
-                $('#profilepage').hide()
-                $('#message').show()
+                
             })
         })
     })
@@ -37,18 +33,19 @@
             top:5px; 
             right:5px;
         }
+
+        #feed {
+            position:absolute; 
+            top:5px; 
+            right:100px;
+        }
     </style>
 </head>
 <body>
-    <div id="message">
-        <h4>
-            Logged out.
-        </h4>
-    </div>
-    
     <div class="container m-4" id="profilepage">
         <h4>Welcome to your profile page</h2>
-        <button id="logout_button">Log out</button>
+        <button id="logout_button"><a href="http://localhost:7777">Logout</a></button>
+        <button id="feed"><a href="http://localhost:7777/homepage/api/posts/allposts">Feed</a></button>
         <h3>{{user.username}}</h2>
         <img src="{{user.image}}" height="200">
         <p>{{user.bio}}</p>

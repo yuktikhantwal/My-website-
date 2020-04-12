@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Here you can view all posts!</h3>
+    <ul>
+        {{#each posts as |post|}}
+            <li>
+                <h5>Post made by user {{ post.userid }} at {{post.createdAt}}</h5>
+                <p>{{post.body}}</p>
+                <br>
+                <img src="{{post.image}}" height="100">
+            </li>
+        {{/each}}
+    </ul>
+</body>
+</html>
